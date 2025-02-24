@@ -55,22 +55,7 @@ const modules2 = {
  * Detect used fontawesome icons in the directories `src/**` and `static/**{.html|.css}`
  * @param {boolean} debug - Enable debug output
  * @returns {FontawesomeConfig} - used icons
- */
 
-export function getFontawesomeConfig(debug = false): FontawesomeConfig {
-  const time = Date.now();
-  const srcFiles = findAllFiles(
-    "./src",
-    (filename) =>
-      !filename.endsWith("fontawesome-5.scss") &&
-      !filename.endsWith("fontawesome-6.scss") //ignore our own css
-  );
-  const staticFiles = findAllFiles(
-    "./static",
-    (filename) => filename.endsWith(".html") || filename.endsWith(".css")
-  );
-
-  const allFiles = [...srcFiles, ...staticFiles];
   const usedClassesSet: Set<string> = new Set();
 
   const regex = /\bfa-[a-z0-9-]+\b/g;
